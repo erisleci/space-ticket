@@ -1,6 +1,10 @@
 export function formatDate(departure: string) {
-    departure = new Date(departure);
-    const month = departure.getMonth() + 1;
-    departure = `${departure.getDate()}/${month < 10 ? `0${month}` : month}/${departure.getFullYear()}`;
-    return departure;
+    const date = new Date(departure);
+    const day = date.getDate()
+    const month = date.getMonth() + 1;
+    const SEPARATOR = '/';
+    const paddedMonth = month < 10 ? `0${month}` : month;
+    const year = date.getFullYear();
+
+    return day + SEPARATOR + paddedMonth + SEPARATOR + year;
 }
