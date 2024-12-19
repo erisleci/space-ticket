@@ -1,6 +1,7 @@
 import { Alert, Button, FocusPageLayout, HeroTitle, Ticket } from '@design-system';
 import { useState } from 'react';
-import { auditTicket, type TicketAudit } from 'nasa-client';
+
+import { type TicketAudit, useTicketAuditAdapter } from '../../TicketAuditProvider';
 import { formatDate } from './utils/ticketPageUtils';
 
 type Ticket = { id: string; destination: string; departure: string };
@@ -9,6 +10,7 @@ export const TicketPage = () => {
     const [ticket, setTicket] = useState<Ticket>();
     const [isError, setIsError] = useState(false);
     const [audit, setAudit] = useState<TicketAudit>();
+    const auditTicket = useTicketAuditAdapter();
 
     const createTicket = async () => {
         const response = await fetch('http://localhost:3000/ticket', {
