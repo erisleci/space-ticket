@@ -1,6 +1,7 @@
 import { Alert, Button, FocusPageLayout, HeroTitle, Ticket } from '@design-system';
 import { useState } from 'react';
 import { auditTicket, type TicketAudit } from 'nasa-client';
+import { formatDate } from './utils/ticketPageUtils';
 
 type Ticket = { id: string; destination: string; departure: string };
 
@@ -8,13 +9,6 @@ export const TicketPage = () => {
     const [ticket, setTicket] = useState<Ticket>();
     const [isError, setIsError] = useState(false);
     const [audit, setAudit] = useState<TicketAudit>();
-    let departure;
-
-    if (ticket) {
-        departure = new Date(ticket.departure);
-        const month = departure.getMonth() + 1;
-        departure = `${departure.getDate()}/${month < 10 ? `0${month}` : month}/${departure.getFullYear()}`;
-    }
 
     const createTicket = async () => {
         const response = await fetch('http://localhost:3000/ticket', {
@@ -38,7 +32,9 @@ export const TicketPage = () => {
             {isError && <Alert variant="info">No space travels are planned yet.</Alert>}
             {!ticket && isError === false && (
                 <p className="mt-20">
-                    <Button onClick={createTicket} data-test="control-get-ticket">Get ticket</Button>
+                    <Button onClick={createTicket} data-test="control-get-ticket">
+                        Get ticket
+                    </Button>
                 </p>
             )}
             {ticket && (
@@ -48,7 +44,7 @@ export const TicketPage = () => {
                     <Ticket
                         data-test="ticket"
                         destination={ticket.destination}
-                        departure={departure!}
+                        departure={formatDate(ticket.departure)}
                         type={audit?.ticketType}
                     />
                 </>

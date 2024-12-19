@@ -8,10 +8,14 @@ export const LandingPage = () => {
             <HeroTitle title="Space Ticket app" />
             <MainMenu>
                 <MainMenu.Item>
-                    <Link to="/intro">App introduction</Link>
+                    <Link to="/intro" data-test="menu-intro">
+                        App introduction
+                    </Link>
                 </MainMenu.Item>
                 <MainMenu.Item>
-                    <Link to="/ticket" data-test="menu-ticket">Get ticket</Link>
+                    <Link to="/ticket" data-test="menu-ticket">
+                        Get ticket
+                    </Link>
                 </MainMenu.Item>
             </MainMenu>
         </FocusPageLayout>

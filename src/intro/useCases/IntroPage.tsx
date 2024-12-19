@@ -7,7 +7,7 @@ export const IntroPage = () => {
     return (
         <FocusPageLayout>
             <HeroTitle title="/Introduction" disabled />
-            <p>
+            <p data-test="intro-paragraph">
                 {hours < 12 ? 'Good morning' : 'Hello'}, this app enables to retrieve a
                 ticket to a space shuttle ;)
             </p>
