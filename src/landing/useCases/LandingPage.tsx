@@ -11,7 +11,7 @@ export const LandingPage = () => {
                     <Link to="/intro">App introduction</Link>
                 </MainMenu.Item>
                 <MainMenu.Item>
-                    <Link to="/ticket">Get ticket</Link>
+                    <Link to="/ticket" data-test="menu-ticket">Get ticket</Link>
                 </MainMenu.Item>
             </MainMenu>
         </FocusPageLayout>

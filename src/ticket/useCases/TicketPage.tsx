@@ -38,7 +38,7 @@ export const TicketPage = () => {
             {isError && <Alert variant="info">No space travels are planned yet.</Alert>}
             {!ticket && isError === false && (
                 <p className="mt-20">
-                    <Button onClick={createTicket}>Get ticket</Button>
+                    <Button onClick={createTicket} data-test="control-get-ticket">Get ticket</Button>
                 </p>
             )}
             {ticket && (
@@ -46,6 +46,7 @@ export const TicketPage = () => {
                     <h2>Congratulations 🎉</h2>
                     <p className="mb-10">Here is your ticket:</p>
                     <Ticket
+                        data-test="ticket"
                         destination={ticket.destination}
                         departure={departure!}
                         type={audit?.ticketType}
